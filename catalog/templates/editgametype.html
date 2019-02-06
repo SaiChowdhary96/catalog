@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Game Type</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<h1 class="w3-margin">Edit game type here</h1>
+	<form action="{{ url_for('editGameType', game_type_id = game_type.id) }}" method="POST">
+		<div class="w3-margin w3-card-4" style="width: 60%;">
+			<div class="w3-teal w3-container">
+				<h2>Edit</h2>
+			</div>
+			<div class="w3-padding w3-margin">
+				<label>Name </label>
+				<input class="w3-input w3-border" type="text" name="name" placeholder="{{ game_type.name }}" required>
+				<div class="w3-margin w3-center">
+					<input class="w3-btn w3-green" type="submit" value="Edit">
+					<a class="w3-btn w3-red" href="{{ url_for('showGameTypes') }}">Cancel</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show Games</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="w3-margin">
+		<h1>Games in {{ "'"+game_type.name+"'" }} category</h1>
+	</div>
+	<a class="w3-btn w3-blue w3-margin-left" href="{{ url_for('showLogin') }}">Login</a>
+	<a class="w3-btn w3-green" href="{{ url_for('showGameTypes') }}">Goto Home Page</a>
+	<br>
+	{% for pcgame in pcgames %}
+	<div class="w3-margin w3-card-4" style="width: 46%; float: left;">
+		<div class="w3-container w3-teal">
+			<h2>{{ pcgame.name }}</h2>
+		</div>
+		<img src="{{ pcgame.image }}" style="width: 100%;"><br><br>
+		<div class="w3-padding">
+			<strong>Description</strong><br>
+			{{ pcgame.description }}<br><br>	
+			<strong>Release Date</strong><br>
+			{{ pcgame.release_date }}<br><br>
+			<strong>Company</strong><br>
+			{{ pcgame.company }}<br><br>
+		</div>	
+	</div>
+	{% endfor %}
+</body>
+</html>

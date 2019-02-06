@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game Types</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<h1 class="w3-margin-left">Types of Games</h1>
+	<a class="w3-margin-left w3-btn w3-green" href="{{ url_for('newGameType') }}">Add new game type</a>
+	<a class="w3-btn w3-red" href="{{ url_for('gdisconnect') }}">Logout</a><br>
+	{% for game_type in game_types %}
+	<div class="container" style="width: 50%; float: left;">
+		<div class=" w3-black w3-margin w3-card-4 w3-panel w3-padding w3-border-red w3-leftbar">
+			<div class="w3-card-4 w3-panel">
+				<h2>{{ game_type.name }}</h2>
+				<a class="w3-btn w3-blue" href="{{ url_for('showGames', game_type_id = game_type.id) }}">View Games</a>
+				<a class="w3-btn w3-green" href="{{ url_for('editGameType', game_type_id = game_type.id) }}">Edit</a>
+				<a class="w3-btn w3-red" href="{{ url_for('deleteGameType', game_type_id = game_type.id) }}">Delete</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show Games</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<h1 class="w3-margin-left">Games in {{ "'"+game_type.name+"'" }} category</h1>
+	<a class="w3-margin-left w3-btn w3-blue" href="{{ url_for('newGame', game_type_id = game_type.id) }}">Add a new game</a>
+	<a class="w3-btn w3-green" href="{{ url_for('showGameTypes') }}">Goto Home Page</a>
+	<a class="w3-btn w3-red" href="{{ url_for('gdisconnect') }}">Logout</a>
+	<br>
+	{% for pcgame in pcgames %}
+	<div class="w3-margin w3-card-4" style="width: 46%; float: left;">
+		<div class="w3-container w3-teal">
+			<h2>{{ pcgame.name }}</h2>
+		</div>
+		<img src="{{ pcgame.image }}" style="width: 100%;"><br><br>
+		<div class="w3-padding">
+			<strong>Description</strong><br>
+			{{ pcgame.description }}<br><br>
+			<strong>Release Date</strong><br>
+			{{ pcgame.release_date }}<br><br>
+			<strong>Company</strong><br>
+			{{ pcgame.company }}<br><br>
+			<div class="w3-margin w3-center">
+				<a class="w3-btn w3-green" href="{{ url_for('editGame', game_type_id = game_type.id, game_id = pcgame.id) }}">Edit</a>
+				<a class="w3-btn w3-red" href="{{ url_for('deleteGame', game_type_id = game_type.id, game_id = pcgame.id) }}">Delete</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</body>
+</html>

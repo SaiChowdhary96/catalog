@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Game</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<h1 class="w3-margin">Add new game here</h1>
+		<form action="{{ url_for('newGame', game_type_id = game_type_id) }}" method="POST">
+			<div class="w3-margin w3-card-4" style="width: 60%;">
+				<div class="w3-container w3-teal">
+					<h2>Add Game</h2>
+				</div>
+				<div class="w3-padding w3-margin">
+					<label>Name </label>
+						<input class="w3-input w3-border" type="text" name="name" required><br>
+					<label>Description</label><br>
+						<textarea class="w3-input w3-border" name="description" required></textarea><br>
+					<label>Image URL</label>
+						<input class="w3-input w3-border" type="text" name="image" required><br>
+					<label>Release Date</label>
+						<input class="w3-input w3-border" type="date" name="releasedate" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"><br>
+					<label>Company</label>
+						<input type="text" name="company" class="w3-input w3-border" required>
+						<br>
+					<div class="w3-margin w3-center">
+						<input class="w3-btn w3-green" type="submit" value="Add">
+						<a class="w3-btn w3-red" href="{{ url_for('showGames',game_type_id = game_type_id) }}">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</form>
+</body>
+</html>
